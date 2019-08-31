@@ -26,7 +26,7 @@ export default class FormCustomerEdit extends React.Component<{}, IFormCustomerE
   public render(): React.ReactElement<{}> {
     return (
       <div>
-              <TextField disabled={this.state.isBusy} label="Feedback" multiline rows={3} name="text" value={this.state.customer.name} onChange={this._onChange} />
+              <TextField disabled={this.state.isBusy} label="Customer Name"  name="text" value={this.state.customer.name} onChange={this._onChange} />
               <div >
                 <DefaultButton disabled={this.state.isBusy } onClick={this._UpdateCustomer}>Save Customer</DefaultButton>
               </div>
