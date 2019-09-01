@@ -82,7 +82,7 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
         ariaLabel: 'Column operations for File type, Press to sort on File type',
         iconName: 'Page',
         isIconOnly: false,
-        fieldName: 'name',
+        fieldName: 'key',
         minWidth: 210,
         maxWidth: 350,
         data: 'string',
@@ -154,7 +154,7 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
         <Separator />
         <div className={classNames.controlWrapper}>
         <Stack >
-        <TextField label="Filter by name:" onChange={this._onChangeText} iconProps={{ iconName: 'search' }} styles={controlStyles} />
+        <TextField label="Filter by name of the customer:" onChange={this._onChangeText} iconProps={{ iconName: 'search' }} styles={controlStyles} />
       </Stack>
          
         </div>
