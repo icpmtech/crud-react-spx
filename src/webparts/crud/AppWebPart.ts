@@ -8,18 +8,18 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'HelloWorldWebPartStrings';
-import HelloWorld from './components/HelloWorld';
-import { IHelloWorldProps } from './components/IHelloWorldProps';
+import App from './components/App';
+import { IAppProps } from './components/IAppProps';
 
-export interface IHelloWorldWebPartProps {
+export interface IAppWebPartWebPartProps {
   description: string;
 }
 
-export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorldWebPartProps> {
+export default class AppWebPart extends BaseClientSideWebPart<IAppWebPartWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IHelloWorldProps > = React.createElement(
-      HelloWorld,
+    const element: React.ReactElement<IAppProps > = React.createElement(
+      App,
       {
         description: this.properties.description
       }

@@ -5,8 +5,8 @@
     "hello-world-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/crud/HelloWorldWebPart.js",
-          "manifest": "./src/webparts/crud/HelloWorldWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/crud/AppWebPart.js",
+          "manifest": "./src/webparts/crud/AppWebPart.manifest.json"
         }
       ]
     }
