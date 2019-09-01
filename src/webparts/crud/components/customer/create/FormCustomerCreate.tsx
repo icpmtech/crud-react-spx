@@ -10,6 +10,7 @@ import {
 } from 'office-ui-fabric-react';
 import { CustomersDataProvider } from '../sharePointDataProvider/CustomersDataProvider';
 import { Customer } from '../Models/Customer';
+import { ICustomer } from '../Models/ICustomer';
 export default class FormCustomerCreate extends React.Component<{}, IFormCustomerCreateState> {
   private _customersDataProvider:CustomersDataProvider;
   private _customer:Customer;
