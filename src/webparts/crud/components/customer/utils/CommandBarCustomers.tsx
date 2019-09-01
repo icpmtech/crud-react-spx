@@ -1,8 +1,34 @@
 import * as React from 'react';
-
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { ICustomersDataProvider } from '../sharePointDataProvider/ICustomersDataProvider';
+import { ICustomer } from '../Models/ICustomer';
+import { CustomersDataProvider } from '../sharePointDataProvider/CustomersDataProvider';
+import { PanelType, Panel } from 'office-ui-fabric-react';
+import FormCustomerCreate from '../create/FormCustomerCreate';
+export interface ICommandBarCustomerState {
+  isVisible: boolean;
+  customer: ICustomer;
+  messageSended: boolean;
+  customersDataProvider:ICustomersDataProvider;
+}
+export class CommandBarCustomers extends React.Component<{}, ICommandBarCustomerState> {
 
-export class CommandBarCustomers extends React.Component<{}, {}> {
+  private  _customersDataProvider:ICustomersDataProvider;
+  private  _customer:ICustomer
+  /**
+   *Cosnstructor og CommandBarCustomers
+   */
+  constructor(props) {
+    super(props);
+    this._customersDataProvider=new CustomersDataProvider({});
+    this.state = {
+      isVisible: false,
+      customer: this._customer,
+      customersDataProvider: this._customersDataProvider,
+      messageSended: false
+    };
+  }
+
   public render(): JSX.Element {
     return (
       <div>
@@ -13,6 +39,9 @@ export class CommandBarCustomers extends React.Component<{}, {}> {
           farItems={this.getFarItems()}
           ariaLabel={'Use left and right arrow keys to navigate between commands'}
         />
+        <Panel isOpen={this.state.isVisible} onDismiss={this._hidePanel} type={PanelType.large} headerText={"New Customer"}>
+        <FormCustomerCreate {...this}  />
+        </Panel>
       </div>
     );
   }
@@ -36,7 +65,12 @@ export class CommandBarCustomers extends React.Component<{}, {}> {
               iconProps: {
                 iconName: 'SwayLogo16'
               },
-              ['data-automation-id']: 'newEmailButton'
+              ['data-automation-id']: 'newEmailButton',
+              onClick: () => {
+                
+                  this.setState( {isVisible:true});
+                    
+              }
             }
           ]
         }
@@ -122,4 +156,9 @@ export class CommandBarCustomers extends React.Component<{}, {}> {
       }
     ];
   };
+  private _hidePanel = () => {
+    this.setState({ isVisible: false });
+  };
+
+
 }

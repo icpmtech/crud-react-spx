@@ -9,16 +9,16 @@ import {
   MessageBarButton
 } from 'office-ui-fabric-react';
 import { CustomersDataProvider } from '../sharePointDataProvider/CustomersDataProvider';
-import { ICustomer } from '../Models/ICustomer';
+import { Customer } from '../Models/Customer';
 export default class FormCustomerCreate extends React.Component<{}, IFormCustomerCreateState> {
   private _customersDataProvider:CustomersDataProvider;
-  private _customer:ICustomer;
+  private _customer:Customer;
   constructor(props){
     super(props);
     this._customersDataProvider=new CustomersDataProvider({});
     this.state = {
       isBusy: false,
-      customer:  this._customer,
+      customer:  new Customer(),
       customersDataProvider: this._customersDataProvider,
       messageSended: false
     };
