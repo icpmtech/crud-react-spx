@@ -17,6 +17,7 @@ export default class FormCustomerCreate extends React.Component<{}, IFormCustome
   constructor(props){
     super(props);
     this._customersDataProvider=new CustomersDataProvider({});
+    debugger;
     this.state = {
       isBusy: false,
       customer:  new Customer(),
@@ -56,6 +57,7 @@ export default class FormCustomerCreate extends React.Component<{}, IFormCustome
        alert("create customer");
    
     });
+    this.state._goBack();
 }
 }
 

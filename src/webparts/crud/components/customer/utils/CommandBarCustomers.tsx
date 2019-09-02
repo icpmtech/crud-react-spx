@@ -10,11 +10,12 @@ export interface ICommandBarCustomerState {
   customer: ICustomer;
   messageSended: boolean;
   customersDataProvider:ICustomersDataProvider;
+  _goBack:VoidFunction;
 }
 export class CommandBarCustomers extends React.Component<{}, ICommandBarCustomerState> {
 
   private  _customersDataProvider:ICustomersDataProvider;
-  private  _customer:ICustomer
+  private  _customer:ICustomer;
   /**
    *Cosnstructor og CommandBarCustomers
    */
@@ -25,7 +26,8 @@ export class CommandBarCustomers extends React.Component<{}, ICommandBarCustomer
       isVisible: false,
       customer: this._customer,
       customersDataProvider: this._customersDataProvider,
-      messageSended: false
+      messageSended: false,
+      _goBack:props.state._goBack
     };
   }
 

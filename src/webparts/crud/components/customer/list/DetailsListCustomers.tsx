@@ -145,7 +145,7 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
     return (
       <Fabric>
         <Separator />
-        <CommandBarCustomers />
+        <CommandBarCustomers  />
         <Separator />
         <div className={classNames.controlWrapper}>
         <Stack >
