@@ -6,4 +6,5 @@ export interface IFormCustomerEditState {
   customer: ICustomer;
   messageSended: boolean;
   customersDataProvider:ICustomersDataProvider;
+  showEditCustomerPanel:boolean;
 }

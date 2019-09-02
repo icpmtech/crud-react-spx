@@ -76,15 +76,11 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
     const columns: IColumn[] = [
       {
         key: 'column1',
-        name: 'Title',
-        className: classNames.fileIconCell,
-        iconClassName: classNames.fileIconHeaderIcon,
-        ariaLabel: 'Column operations for File type, Press to sort on File type',
-        iconName: 'Page',
+        name: 'Id',
         isIconOnly: false,
         fieldName: 'key',
-        minWidth: 210,
-        maxWidth: 350,
+        minWidth: 30,
+        maxWidth: 50,
         data: 'string',
         onColumnClick: this._onColumnClick,
       },

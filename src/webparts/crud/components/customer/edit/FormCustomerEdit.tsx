@@ -19,7 +19,8 @@ export default class FormCustomerEdit extends React.Component<{}, IFormCustomerE
       isBusy: false,
       customer: props.state.selectedCustomer,
       customersDataProvider: this._customersDataProvider,
-      messageSended: false
+      messageSended: false,
+      showEditCustomerPanel:props.state.showEditCustomerPanel
     };
   }
 
@@ -29,6 +30,8 @@ export default class FormCustomerEdit extends React.Component<{}, IFormCustomerE
               <TextField disabled={this.state.isBusy} label="Customer Name"  name="text" value={this.state.customer.name} onChange={this._onChange} />
               <div >
                 <DefaultButton disabled={this.state.isBusy } onClick={this._UpdateCustomer}>Save Customer</DefaultButton>
+                <DefaultButton  onClick={this._Cancel}>Cancel</DefaultButton>
+              
               </div>
       </div>
     );
@@ -47,9 +50,14 @@ export default class FormCustomerEdit extends React.Component<{}, IFormCustomerE
     const {customer}=   this.state;
     this.setState({isBusy:true});
     this._customersDataProvider.updateItem(customer).then((customers: ICustomer[]) => {
-       alert("update customer");
-   
+      console.log("Updated:"+customer);
+      
     });
+    this.setState({showEditCustomerPanel:false});
+}
+private _Cancel = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) : Promise<void> => {
+   debugger;
+  this.setState({showEditCustomerPanel:false});
 }
 }
 
