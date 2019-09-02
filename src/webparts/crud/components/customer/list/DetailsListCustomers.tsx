@@ -216,7 +216,17 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
   
 
   private _hidePanel = () => {
-    this.setState({ showEditCustomerPanel: false, items:this._LoadCustomers() });
+
+
+    const items: ICustomer[] = [];
+    this._customersDataProvider.getItems().then((customers: ICustomer[]) => {
+      customers.forEach(element => {
+        items.push({name:element.name,key:element.key,value:element.value});
+       });
+       this.setState({ showEditCustomerPanel: false, items:items })
+       this.setState({ showEditCustomerPanel: false });
+    });
+   
   }
 
   private _getSelectionDetails(): string {
