@@ -16,11 +16,9 @@ import { CustomersDataProvider } from '../sharePointDataProvider/CustomersDataPr
 import { ICustomer } from '../Models/ICustomer';
 export default class FormCustomerEdit extends React.Component<{}, IFormCustomerEditState> {
   private _customersDataProvider:CustomersDataProvider;
-  private _showEditCustomerPanel=false;
- 
   constructor(props){
     super(props);
-    this._showEditCustomerPanel=props.state.showEditCustomerPanel;
+  
     this._customersDataProvider=new CustomersDataProvider({});
     this.state = {
       isBusy: false,
@@ -36,9 +34,12 @@ export default class FormCustomerEdit extends React.Component<{}, IFormCustomerE
     return (
       <div>
               <TextField disabled={this.state.isBusy} label="Customer Name"  name="text" value={this.state.customer.name} onChange={this._onChange} />
+              <br></br>
+              <div>
               <PrimaryButton disabled={this.state.isBusy } onClick={this._UpdateCustomer}>Save</PrimaryButton>
-              <DefaultButton disabled={!this.state.isBusy } onClick={this.state._goBack} >Cancel</DefaultButton>
-             
+              <br></br>
+              <DefaultButton  onClick={this.state._goBack} >Cancel</DefaultButton>
+              </div>
       </div>
     );
   }

@@ -21,7 +21,8 @@ export default class FormCustomerCreate extends React.Component<{}, IFormCustome
       isBusy: false,
       customer:  new Customer(),
       customersDataProvider: this._customersDataProvider,
-      messageSended: false
+      messageSended: false,
+      _goBack:props.state._goBack,
     };
   }
 
@@ -31,6 +32,9 @@ export default class FormCustomerCreate extends React.Component<{}, IFormCustome
               <TextField disabled={this.state.isBusy} label="Customer Name"  name="text" value={this.state.customer.name} onChange={this._onChange} />
               <div >
                 <DefaultButton disabled={this.state.isBusy } onClick={this._CreateCustomer}>Save Customer</DefaultButton>
+                <br></br>
+              <DefaultButton  onClick={this.state._goBack} >Cancel</DefaultButton>
+           
               </div>
       </div>
     );
