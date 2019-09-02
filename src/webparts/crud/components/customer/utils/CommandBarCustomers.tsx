@@ -11,6 +11,7 @@ export interface ICommandBarCustomerState {
   messageSended: boolean;
   customersDataProvider:ICustomersDataProvider;
   _goBack:VoidFunction;
+  _reload:VoidFunction;
 }
 export class CommandBarCustomers extends React.Component<{}, ICommandBarCustomerState> {
 
@@ -27,7 +28,8 @@ export class CommandBarCustomers extends React.Component<{}, ICommandBarCustomer
       customer: this._customer,
       customersDataProvider: this._customersDataProvider,
       messageSended: false,
-      _goBack:props.state._goBack
+      _goBack:this._hidePanel,
+      _reload:props.state._goBack,
     };
   }
 

@@ -7,4 +7,5 @@ export interface IDetailsListCustomersState {
     selectedCustomer: ICustomer;
     showEditCustomerPanel:boolean;
     _goBack:VoidFunction;
+    _reloadList?:VoidFunction;
 }

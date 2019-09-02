@@ -24,6 +24,7 @@ export default class FormCustomerCreate extends React.Component<{}, IFormCustome
       customersDataProvider: this._customersDataProvider,
       messageSended: false,
       _goBack:props.state._goBack,
+      _reload:props.state._reload,
     };
   }
 
@@ -34,7 +35,7 @@ export default class FormCustomerCreate extends React.Component<{}, IFormCustome
               <div >
                 <DefaultButton disabled={this.state.isBusy } onClick={this._CreateCustomer}>Save Customer</DefaultButton>
                 <br></br>
-              <DefaultButton  onClick={this.state._goBack} >Cancel</DefaultButton>
+               <DefaultButton  onClick={this.state._goBack} >Cancel</DefaultButton>
            
               </div>
       </div>
@@ -54,10 +55,11 @@ export default class FormCustomerCreate extends React.Component<{}, IFormCustome
     const {customer}=   this.state;
     this.setState({isBusy:true});
     this._customersDataProvider.createItem(customer).then((customers: ICustomer[]) => {
-       alert("create customer");
-   
+       this.state._reload();
     });
+    
     this.state._goBack();
+   
 }
 }
 

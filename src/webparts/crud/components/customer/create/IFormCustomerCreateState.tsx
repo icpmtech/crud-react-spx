@@ -7,4 +7,5 @@ export interface IFormCustomerCreateState {
   messageSended: boolean;
   customersDataProvider:ICustomersDataProvider;
   _goBack:VoidFunction;
+  _reload:VoidFunction;
 }
