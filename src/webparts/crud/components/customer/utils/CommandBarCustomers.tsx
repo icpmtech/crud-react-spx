@@ -96,7 +96,7 @@ export class CommandBarCustomers extends React.Component<{}, ICommandBarCustomer
         onClick: () => console.log('Download')
       }
     ];
-  };
+  }
 
   private getOverlflowItems = () => {
     return [
@@ -125,7 +125,7 @@ export class CommandBarCustomers extends React.Component<{}, ICommandBarCustomer
         }
       }
     ];
-  };
+  }
 
   private getFarItems = () => {
     return [
@@ -159,10 +159,10 @@ export class CommandBarCustomers extends React.Component<{}, ICommandBarCustomer
         onClick: () => console.log('Info')
       }
     ];
-  };
+  }
   private _hidePanel = () => {
     this.setState({ isVisible: false });
-  };
+  }
 
 
 }
