@@ -7,4 +7,5 @@ export interface IFormCustomerEditState {
   messageSended: boolean;
   customersDataProvider:ICustomersDataProvider;
   showEditCustomerPanel:boolean;
+  _goBack:VoidFunction;
 }

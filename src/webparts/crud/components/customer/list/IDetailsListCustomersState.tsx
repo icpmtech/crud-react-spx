@@ -6,4 +6,5 @@ export interface IDetailsListCustomersState {
     selectionDetails: string;
     selectedCustomer: ICustomer;
     showEditCustomerPanel:boolean;
+    _goBack:VoidFunction;
 }

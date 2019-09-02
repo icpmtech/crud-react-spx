@@ -16,7 +16,7 @@ import {ICustomer} from '../Models/ICustomer';
 import FormCustomerEdit from '../edit/FormCustomerEdit';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import Modal from 'office-ui-fabric-react/lib/Modal';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, Button } from 'office-ui-fabric-react/lib/Button';
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
     padding: 0,
@@ -65,7 +65,6 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
   // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
   private _titleId: string = getId('title');
   private _subtitleId: string = getId('subText');
- ;
   constructor(props: {}) {
    
     super(props);
@@ -133,13 +132,13 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
       columns: columns,
       selectionDetails: this._getSelectionDetails(),
       showEditCustomerPanel: false,
-      selectedCustomer: null
-
+      selectedCustomer: null,
+      _goBack:this._hidePanel
       
       
     };
   }
-
+ 
   public render() {
     const { columns, items, selectionDetails,showEditCustomerPanel } = this.state;
 
@@ -175,7 +174,7 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
           
         </MarqueeSelection>
         <div>
-        <Panel isOpen={this.state.showEditCustomerPanel} onDismiss={this._hidePanel} type={PanelType.large} headerText="Edit Customer">
+        <Panel isOpen={this.state.showEditCustomerPanel} onDismiss={this._hidePanel} type={PanelType.extraLarge} headerText="Edit Customer">
          <FormCustomerEdit {...this}  />
         </Panel>
       </div>
@@ -195,6 +194,7 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
   }
 //To Update the items in the list
   public componentDidUpdate(previousProps: any, previousState: IDetailsListCustomersState) {
+    
   }
 
   private _getKey(item: any, index?: number): string {
@@ -209,10 +209,7 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
 
   private _onItemInvoked(item: any,value:any): void {
     let itemCustomer=item as ICustomer;
-     value.setState( {selectedCustomer:itemCustomer});
-    <Panel isOpen={this.state.showEditCustomerPanel} onDismiss={this._hidePanel} type={PanelType.large} headerText={itemCustomer.name}>
-    <FormCustomerEdit {...itemCustomer}  />
-   </Panel>
+    value.setState( {selectedCustomer:itemCustomer});
     value.setState( {showEditCustomerPanel:true});
    
   }
@@ -220,7 +217,7 @@ export class DetailsListCustomers extends React.Component<{}, IDetailsListCustom
 
   private _hidePanel = () => {
     this.setState({ showEditCustomerPanel: false, items:this._LoadCustomers() });
-  };
+  }
 
   private _getSelectionDetails(): string {
     const selectionCount = this._selection.getSelectedCount();
